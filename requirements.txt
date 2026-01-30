@@ -1,0 +1,7 @@
+Pandas
+Numpy
+scikit-learn
+gensim
+nltk
+
+# -e .

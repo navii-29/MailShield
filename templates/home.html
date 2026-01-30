@@ -1,0 +1,177 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MailShield • Spam Detector</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1f2a64, #7b4ca0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+/* Glass Card */
+.container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(18px);
+    border-radius: 28px;
+    padding: 45px 40px;
+    width: 520px;
+    max-width: 92%;
+    text-align: center;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.logo {
+    font-size: 2.6rem;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: #e0e0ff;
+    margin-bottom: 30px;
+}
+
+/* Textarea */
+textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 16px;
+    font-size: 1rem;
+    border-radius: 16px;
+    border: none;
+    resize: vertical;
+    outline: none;
+}
+
+/* Button */
+button {
+    margin-top: 22px;
+    width: 100%;
+    padding: 16px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 45px rgba(0,0,0,0.45);
+}
+
+/* Results */
+.result {
+    margin-top: 25px;
+    padding: 18px;
+    border-radius: 16px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* Spam */
+.result.spam {
+    background: #fde2e2;
+    color: #721c24;
+}
+
+/* Safe */
+.result.safe {
+    background: #e6f4ea;
+    color: #155724;
+}
+
+/* Error */
+.result.error {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* Footer */
+.footer {
+    margin-top: 25px;
+    font-size: 0.85rem;
+    opacity: 0.75;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="logo">🛡️</div>
+    <h1>MailShield</h1>
+    <p class="subtitle">AI-powered spam detection</p>
+
+    <!-- FORM POST -->
+    <form action="/predict" method="POST">
+        <textarea name="email" placeholder="Paste email or message text here..." required></textarea>
+        <button type="submit">🔍 Detect Spam</button>
+    </form>
+
+    {% if results is not none %}
+        <div class="result {{ 'spam' if results == 1 or results == 'Spam' else 'safe' }}">
+            {% if results == 1 or results == 'Spam' %}
+                🛑 <strong>SPAM DETECTED</strong><br>
+                Confidence: {{ raw_prediction }}
+            {% else %}
+                ✅ <strong>NOT SPAM</strong><br>
+                Confidence: {{ raw_prediction }}
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if error %}
+        <div class="result error">
+            ❌ {{ error }}
+        </div>
+    {% endif %}
+
+    <div class="footer">
+        Built with Machine Learning ❤️
+    </div>
+</div>
+
+</body>
+</html>

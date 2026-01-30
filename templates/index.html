@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MailShield • AI Spam Detection</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1f2a64, #7b4ca0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+/* Glass Card */
+.card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(18px);
+    border-radius: 28px;
+    padding: 60px 50px;
+    max-width: 520px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+    animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.logo {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 1.1rem;
+    color: #e0e0ff;
+    margin-bottom: 35px;
+    line-height: 1.6;
+}
+
+/* Button */
+a {
+    display: inline-block;
+    padding: 16px 46px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.45);
+}
+
+/* Footer */
+.footer {
+    margin-top: 40px;
+    font-size: 0.9rem;
+    opacity: 0.75;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <div class="logo">🛡️</div>
+    <h1>MailShield</h1>
+    <p>
+        AI-powered spam detection that keeps your inbox safe, clean,
+        and distraction-free.
+    </p>
+
+    <!-- SAFE NAVIGATION -->
+    <a href="/predict">Start Detection</a>
+
+    <div class="footer">
+        Built with Machine Learning ❤️
+    </div>
+</div>
+
+</body>
+</html>
+
